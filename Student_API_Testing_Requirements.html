@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student API Requirements & Validation Checklist</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+        .header .subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .method {
+            background: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .requirements {
+            margin: 10px 0;
+        }
+        .requirement {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 3px;
+            border-left: 3px solid #27ae60;
+        }
+        .requirement-header {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .test-cases {
+            margin: 10px 0;
+        }
+        .test-case {
+            background: #ecf0f1;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .validation-checklist {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .checklist-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        .checklist-item input {
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+        .error-responses {
+            background: #fee;
+            border: 1px solid #fcc;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+        }
+        .success-responses {
+            background: #efe;
+            border: 1px solid #cfc;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+        }
+        .code {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .note {
+            background: #e8f4f8;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+        }
+        @media print {
+            body {
+                margin: 20px;
+                font-size: 11px;
+                line-height: 1.4;
+                color: #000;
+            }
+            .header {
+                background: #fff !important;
+                color: #000 !important;
+                border-bottom: 2px solid #000;
+                padding: 0.5rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+                color: #000;
+            }
+            .subtitle { color: #333; }
+            .section {
+                margin: 0.8rem 0;
+                page-break-inside: avoid;
+            }
+            .section h2 {
+                font-size: 1.4rem;
+                border-bottom: 1px solid #000;
+                page-break-after: avoid;
+            }
+            .endpoint {
+                page-break-inside: avoid;
+                border: 1px solid #000;
+                background: #fff !important;
+            }
+            .code-block {
+                background: #f5f5f5 !important;
+                border: 1px solid #ccc;
+                font-size: 10px;
+            }
+            .checklist-item {
+                page-break-inside: avoid;
+            }
+            .note, .alert {
+                background: #f9f9f9 !important;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+            button { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 Student API Testing Requirements</h1>
+        <div class="subtitle">Comprehensive Validation Checklist & Bug Discovery Guide</div>
+        <div class="subtitle">API Testing Lab | 11/7/2025</div>
+        <div style="text-align: center; margin-top: 1rem;">
+            <button onclick="window.print()" style="background: #10b981; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; margin-right: 1rem;">
+                🖨️ Print/Save as PDF
+            </button>
+            <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">💡 Save this document for offline testing!</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Testing Objectives & Approach</h2>
+        <p>This document provides the official requirements for validating the Student Management API. Use it as your testing roadmap to systematically discover bugs, performance issues, and validation problems.</p>
+
+        <div class="note">
+            <strong>🎓 Learning Both Skills:</strong> This API teaches API usage AND testing. Use working endpoints (✅) to learn REST patterns, then discover bugs (🐛) through systematic testing.
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">📋 Step-by-Step Testing Process</div>
+            <ol>
+                <li><strong>Learn API Usage:</strong> Start with working endpoints to understand proper REST API patterns</li>
+                <li><strong>Test Functionality:</strong> Verify each endpoint works as documented</li>
+                <li><strong>Discover Bugs:</strong> Find discrepancies between expected vs actual behavior</li>
+                <li><strong>Document Findings:</strong> Record what you expected vs what actually happened</li>
+                <li><strong>Measure Performance:</strong> Time requests and identify slow endpoints</li>
+            </ol>
+        </div>
+
+        <div class="note">
+            <strong>🔍 How to Identify Bugs:</strong> Each test case clearly shows what SHOULD happen vs what ACTUALLY happens. When you see a difference, you've found a bug!
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 API Endpoints & Requirements</h2>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return API information with status 200
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{"api": "Student API"}</code>
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X GET https://student-api-rouge.vercel.app/</div>
+                <div class="test-case">Verify response contains {"api": "Student API"}</div>
+                <div class="test-case">Verify HTTP status is 200</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/health</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return system health status with status 200
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response Structure:</strong><br>
+                    <code>{ "status": "healthy", "timestamp": "...", "uptime": number, "version": "1.0.0", "students": { "total": number, "active": number }, "endpoints": [...] }</code>
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X GET https://student-api-rouge.vercel.app/health</div>
+                <div class="test-case">Verify status is "healthy"</div>
+                <div class="test-case">Verify timestamp is valid ISO format</div>
+                <div class="test-case">Verify uptime is a positive number</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/students</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return array of all students with status 200
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should support <code>active</code> query parameter to filter by active status
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>[{ "id": number, "name": string, "email": string, "role": string, "enrolled_at": string, "active": boolean, "team": string, "github": string }, ...]</code>
+                </div>
+                <div class="note">
+                    <strong>Query Parameters:</strong><br>
+                    - <code>active=true</code> - Return only active students<br>
+                    - <code>active=false</code> - Return only inactive students
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl https://student-api-rouge.vercel.app/students - Test basic functionality</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/students?active=true" - Test active filter</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/students?active=false" - Test inactive filter</div>
+                <div class="test-case">Verify response structure and data accuracy</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">POST</span>
+                <span class="endpoint-url">/students</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should create new student and return it with status 201
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should validate required fields (id, name, email)
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should reject duplicate student IDs with status 409
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Request Body:</strong><br>
+                    <code>{ "id": number, "name": string, "email": string, "role": string, "enrolled_at": string, "active": boolean, "team": string, "github": string }</code>
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{ "id": number, "name": string, "email": string, ... }</code>
+                </div>
+                <div class="error-responses">
+                    <strong>Expected Error Responses:</strong><br>
+                    <code>409 Conflict</code> - Student with this ID already exists
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X POST https://student-api-rouge.vercel.app/students -H "Content-Type: application/json" -d '{"id": 9999, "name": "Test Student", "email": "test@example.com"}' - Test student creation</div>
+                <div class="test-case">curl -X POST https://student-api-rouge.vercel.app/students -H "Content-Type: application/json" -d '{"id": 9999, "name": "Duplicate", "email": "duplicate@test.com"}' - Test duplicate handling</div>
+                <div class="test-case">curl -X POST https://student-api-rouge.vercel.app/students -H "Content-Type: application/json" -d '{}' - Test validation</div>
+                <div class="test-case">Verify response codes and data validation</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/students/{id}</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return specific student by ID with status 200
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should validate that ID is a valid number
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return 404 if student not found
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{ "id": number, "name": string, "email": string, ... }</code>
+                </div>
+                <div class="error-responses">
+                    <strong>Expected Error Responses:</strong><br>
+                    <code>404 Not Found</code> - Student not found<br>
+                    <code>400 Bad Request</code> - Invalid ID format
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X GET https://student-api-rouge.vercel.app/students/2420983</div>
+                <div class="test-case">Test with existing student ID</div>
+                <div class="test-case">Test with non-existent student ID (should return 404)</div>
+                <div class="test-case">Test with invalid ID format (non-numeric)</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">PATCH</span>
+                <span class="endpoint-url">/students/{id}</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should partially update student and return updated data with status 200
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should validate that ID is a valid number
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return 404 if student not found
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return 400 if request body is empty
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Request Body:</strong><br>
+                    <code>{ "name": string } // or any valid field</code>
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{ "id": number, "name": string, ... } // Updated student</code>
+                </div>
+                <div class="error-responses">
+                    <strong>Expected Error Responses:</strong><br>
+                    <code>404 Not Found</code> - Student not found<br>
+                    <code>400 Bad Request</code> - Empty request body or invalid ID
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X PATCH {{BASE_URL}}/students/2420983 -H "Content-Type: application/json" -d '{"name": "Updated Name"}'</div>
+                <div class="test-case">Test updating existing student</div>
+                <div class="test-case">Test updating non-existent student (should return 404)</div>
+                <div class="test-case">Test with empty request body (should return 400)</div>
+                <div class="test-case">Test with invalid ID format</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">DELETE</span>
+                <span class="endpoint-url">/students/{id}</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should delete student and return status 204
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should validate that ID is a valid number
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return 404 if student not found
+                </div>
+                <div class="error-responses">
+                    <strong>Expected Error Responses:</strong><br>
+                    <code>404 Not Found</code> - Student not found<br>
+                    <code>400 Bad Request</code> - Invalid ID format
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl -X DELETE https://student-api-rouge.vercel.app/students/2420983 - Test student deletion</div>
+                <div class="test-case">curl -X DELETE https://student-api-rouge.vercel.app/students/999999 - Test non-existent student</div>
+                <div class="test-case">curl -X DELETE https://student-api-rouge.vercel.app/students/abc - Test invalid ID format</div>
+                <div class="test-case">Verify response codes and error handling</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/search</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should search students by name (case-insensitive) with status 200
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should require 'q' query parameter
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return 400 if 'q' parameter is missing
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">⚡ Performance Requirement:</div>
+                    <strong>Response time must be &lt; 500ms</strong> for all search queries
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{ "results": [{ "id": number, "name": string, "email": string, ... }] }</code>
+                </div>
+                <div class="error-responses">
+                    <strong>Expected Error Responses:</strong><br>
+                    <code>400 Bad Request</code> - Missing 'q' parameter
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/search?q=john" - Test search functionality</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/search?q=mi" - Test partial matching</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/search" - Test missing parameter handling</div>
+                <div class="test-case">Measure response time and performance</div>
+            </div>
+        </div>
+
+        <div class="endpoint">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="endpoint-url">/students/paginated</span>
+            </div>
+            <div class="requirements">
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should return paginated students with status 200
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should support 'page' and 'size' query parameters
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should default to page=1, size=10
+                </div>
+                <div class="requirement">
+                    <div class="requirement-header">✅ Requirement:</div>
+                    Should validate page >= 1 and size between 1-100
+                </div>
+                <div class="success-responses">
+                    <strong>Expected Response:</strong><br>
+                    <code>{ "page": number, "size": number, "data": [...], "total": number }</code>
+                </div>
+            </div>
+            <div class="test-cases">
+                <strong>Test Cases:</strong>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/students/paginated" - Test default pagination</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/students/paginated?page=1&size=5" - Test custom pagination</div>
+                <div class="test-case">curl "https://student-api-rouge.vercel.app/students/paginated?page=2&size=10" - Test page navigation</div>
+                <div class="test-case">Verify pagination structure and data accuracy</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📝 Validation Checklist</h2>
+        <div class="validation-checklist">
+            <strong>Use this checklist to systematically validate the API (including performance):</strong>
+
+            <div class="checklist-item">
+                <input type="checkbox"> GET /health - Health check functionality
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET / - API information endpoint
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /docs - API documentation access
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /students - List all students
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /students?active=true - Active student filtering
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> POST /students - Create new student
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> POST /students (duplicate ID) - Duplicate prevention
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /students/{id} - Get student by ID
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> PATCH /students/{id} - Update student
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> DELETE /students/{id} - Delete student
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> DELETE /students/{non-existent} - Delete error handling
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /search?q=name - Search functionality
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /search (performance) - Response time testing
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /students/paginated - Pagination functionality
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox"> GET /students/paginated (data/count) - Pagination accuracy
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧪 Testing Strategy</h2>
+        <ol>
+            <li><strong>Start with health checks:</strong> Verify API is running and accessible</li>
+            <li><strong>Test read operations:</strong> GET endpoints (safe to test multiple times)</li>
+            <li><strong>Test search and pagination:</strong> Query parameter functionality</li>
+            <li><strong>Test write operations:</strong> POST, PATCH, DELETE (be careful with data)</li>
+            <li><strong>Test error conditions:</strong> Invalid inputs, missing data, etc.</li>
+            <li><strong>Document findings:</strong> Note any deviations from requirements</li>
+        </ol>
+
+        <h3>🎯 Learning Both API Usage & Testing</h3>
+        <ol>
+            <li><strong>Learn API usage first:</strong> Use working endpoints (✅) to understand REST patterns</li>
+            <li><strong>Then find bugs:</strong> Test endpoints with bugs (🐛) and compare vs requirements</li>
+            <li><strong>Document discrepancies:</strong> Note what you expect vs what you actually get</li>
+            <li><strong>Practice systematic testing:</strong> Check status codes, response data, performance</li>
+            <li><strong>Master both skills:</strong> API consumption + quality assurance testing</li>
+        </ol>
+
+        <div class="note">
+            <strong>Balanced Learning Approach:</strong> This API is designed to teach both API usage and testing skills. Use working endpoints (✅) to learn REST API patterns, then discover bugs (🐛) through systematic testing.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📊 Student Data Summary</h2>
+        <p>The API contains student data from 14 different GitHub teams with the following characteristics:</p>
+        <ul>
+            <li><strong>Total Students:</strong> 39</li>
+            <li><strong>Active Students:</strong> All students are initially active</li>
+            <li><strong>Teams:</strong> 14 different team names</li>
+            <li><strong>GitHub Organizations:</strong> Links to team repositories</li>
+            <li><strong>Email Format:</strong> {name}@{school}.edu</li>
+            <li><strong>ID Range:</strong> Various numeric IDs</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>⚡ Performance Requirements</h2>
+        <ul>
+            <li><strong>Search Response Time:</strong> All search queries must respond in &lt; 500ms</li>
+            <li><strong>General Response Time:</strong> All other endpoints should respond in &lt; 200ms</li>
+            <li><strong>Concurrent Users:</strong> API must support 70+ simultaneous users</li>
+            <li><strong>Memory Usage:</strong> Server should not exceed 100MB heap usage</li>
+            <li><strong>Error Handling:</strong> No endpoint should cause server crashes</li>
+        </ul>
+
+        <h3>⚡ Performance Testing Focus</h3>
+        <ul>
+            <li><strong>Response Time Measurement:</strong> Use browser dev tools or curl timing</li>
+            <li><strong>Load Testing:</strong> Test concurrent requests and system limits</li>
+            <li><strong>Memory Monitoring:</strong> Check for memory leaks during testing</li>
+            <li><strong>Error Recovery:</strong> Test system stability under error conditions</li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666;">
+        <p><strong>🎓 Student API Testing Requirements Document</strong></p>
+        <p>Generated: 11/7/2025, 7:35:25 AM</p>
+        <p><strong>Master Both Skills:</strong> Learn API consumption and quality assurance testing through systematic validation.</p>
+        <p><em>Test thoroughly and document your findings!</em></p>
+    </div>
+</body>
+</html>
