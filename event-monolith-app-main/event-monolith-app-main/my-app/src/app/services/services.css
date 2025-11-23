@@ -1,0 +1,145 @@
+.services-section {
+    padding: 80px 20px;
+    background-color: #F5F5F5;
+    font-family: "Inter", Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+}
+
+.home-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.home-logo:hover {
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services-main-heading {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.services-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.subject-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.subject-header {
+    margin-bottom: 20px;
+}
+
+.subject-title {
+    color: #00D4AA;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.subject-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.enrollment-cta {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.enrollment-cta h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.enrollment-cta p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.auth-btn {
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    border: 2px solid #00D4AA;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.login-btn {
+    background-color: white;
+    color: #00D4AA;
+}
+
+.login-btn:hover {
+    background-color: #f0fdfa;
+    transform: translateY(-2px);
+}
+
+.register-btn {
+    background-color: #00D4AA;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #00b894;
+    transform: translateY(-2px);
+}

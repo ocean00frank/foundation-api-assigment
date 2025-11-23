@@ -1,0 +1,538 @@
+
+
+/* admin-login.module.css */
+.adminLoginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.adminLoginCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  position: relative;
+}
+
+.adminLoginHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.adminLogo {
+  width: 120px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.adminLockIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  background: rgba(79, 70, 229, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00D4AA;
+}
+
+.adminLockIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.adminLoginHeader h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px;
+}
+
+.adminLoginHeader p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 16px;
+}
+
+.adminLoginForm {
+  margin-bottom: 32px;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #00D4AA;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.formGroup input.error {
+  border-color: #ef4444;
+}
+
+.passwordInputContainer {
+  position: relative;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.togglePassword svg {
+  width: 20px;
+  height: 20px;
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 6px;
+  display: block;
+}
+
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.checkboxContainer input {
+  margin: 0;
+  margin-right: 8px;
+}
+
+.forgotLink {
+  color: #00D4AA;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 14px;
+  background: #00D4AA;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.loginButton:hover:not(:disabled) {
+  background: #019174;
+}
+
+.loginButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loginButton.loading {
+  background: #00D4AA;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.adminLoginFooter {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.adminLoginFooter p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Large Desktop Screens (1920px and up) */
+@media (min-width: 1920px) {
+  .adminLoginCard {
+    max-width: 500px;
+    padding: 50px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 28px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 18px;
+  }
+  
+  .formGroup input {
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+  
+  .loginButton {
+    padding: 18px;
+    font-size: 18px;
+  }
+}
+
+/* Standard Desktop Screens (1440px to 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .adminLoginCard {
+    max-width: 460px;
+    padding: 45px;
+  }
+}
+
+/* Small Desktop / Large Tablet (1200px to 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .adminLoginCard {
+    max-width: 440px;
+    padding: 40px;
+  }
+}
+
+/* Tablet Landscape (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .adminLoginCard {
+    max-width: 420px;
+    padding: 35px;
+  }
+}
+
+/* Tablet Portrait (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .adminLoginCard {
+    max-width: 400px;
+    padding: 30px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 22px;
+  }
+  
+  .formOptions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* Large Mobile (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .adminLoginCard {
+    max-width: 380px;
+    padding: 25px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 20px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 15px;
+  }
+  
+  .formGroup input {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+  
+  .loginButton {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Medium Mobile (425px to 575px) */
+@media (min-width: 425px) and (max-width: 575px) {
+  .adminLoginContainer {
+    padding: 15px;
+  }
+  
+  .adminLoginCard {
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+  
+  .adminLogo {
+    width: 100px;
+  }
+  
+  .adminLockIcon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .adminLockIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 20px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 14px;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  .formGroup label {
+    font-size: 13px;
+  }
+  
+  .formGroup input {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  
+  .loginButton {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Small Mobile (375px to 424px) */
+@media (min-width: 375px) and (max-width: 424px) {
+  .adminLoginContainer {
+    padding: 12px;
+  }
+  
+  .adminLoginCard {
+    padding: 22px 18px;
+  }
+  
+  .adminLogo {
+    width: 90px;
+  }
+  
+  .adminLockIcon {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .adminLockIcon svg {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 19px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 13px;
+  }
+  
+  .formGroup input {
+    padding: 9px 11px;
+    font-size: 14px;
+  }
+  
+  .loginButton {
+    padding: 11px;
+    font-size: 14px;
+  }
+  
+  .adminLoginFooter p {
+    font-size: 13px;
+  }
+}
+
+/* Extra Small Mobile (320px to 374px) */
+@media (min-width: 320px) and (max-width: 374px) {
+  .adminLoginContainer {
+    padding: 10px;
+  }
+  
+  .adminLoginCard {
+    padding: 20px 16px;
+  }
+  
+  .adminLogo {
+    width: 80px;
+  }
+  
+  .adminLockIcon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .adminLockIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 18px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 12px;
+  }
+  
+  .formGroup {
+    margin-bottom: 18px;
+  }
+  
+  .formGroup label {
+    font-size: 12px;
+  }
+  
+  .formGroup input {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  .loginButton {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .adminLoginFooter p {
+    font-size: 12px;
+  }
+}
+
+/* Very Small Devices (less than 320px) */
+@media (max-width: 319px) {
+  .adminLoginContainer {
+    padding: 8px;
+  }
+  
+  .adminLoginCard {
+    padding: 18px 14px;
+  }
+  
+  .adminLogo {
+    width: 70px;
+  }
+  
+  .adminLockIcon {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .adminLockIcon svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .adminLoginHeader h1 {
+    font-size: 17px;
+  }
+  
+  .adminLoginHeader p {
+    font-size: 11px;
+  }
+  
+  .formGroup {
+    margin-bottom: 16px;
+  }
+  
+  .formGroup label {
+    font-size: 11px;
+  }
+  
+  .formGroup input {
+    padding: 7px 9px;
+    font-size: 13px;
+  }
+  
+  .loginButton {
+    padding: 9px;
+    font-size: 13px;
+  }
+  
+  .adminLoginFooter p {
+    font-size: 11px;
+  }
+}
+
+/* Orientation-specific styles */
+@media (orientation: landscape) and (max-height: 500px) {
+  .adminLoginContainer {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  
+  .adminLoginCard {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) and (hover: none) {
+  .loginButton {
+    padding: 16px;
+  }
+  
+  .togglePassword {
+    padding: 8px;
+  }
+}

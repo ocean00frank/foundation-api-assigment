@@ -1,0 +1,46 @@
+STEP-BY-STEP GUIDE TO CREATE .env FILE:
+
+1. Go to: backend-elysia folder
+2. Create a file named: .env
+3. Copy and paste this content:
+
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# PostgreSQL Database Connection String
+DATABASE_URL=postgresql://postgres:Ocean0976%40%40@127.0.0.1:5432/monolith_db
+
+# JWT Secret Key
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+
+# SMTP Email Configuration
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=frankkapapamwelwa@gmail.com
+EMAIL_HOST_PASSWORD=lmxq rbbt idns zpvs
+EMAIL_USE_TLS=true
+DEFAULT_FROM_EMAIL=frankkapapamwelwa@gmail.com
+
+# WebSocket Configuration
+WEBSOCKET_ENABLED=true
+
+
+IMPORTANT NOTES:
+
+1. Your password "Ocean0976@@" contains special characters (@)
+   So in the DATABASE_URL, @ symbols need to be encoded as %40
+   
+2. The format is: postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+   Where PASSWORD=Ocean0976%40%40 (URL-encoded)
+
+3. Save this file as: backend-elysia/.env
+
+4. After creating the file, run:
+   cd backend-elysia
+   npm run db:push
+   npm run db:seed
+   npm run dev
+
+This will test your database connection and start the server.
+

@@ -1,0 +1,139 @@
+
+
+.contacts-container {
+    min-height: 100vh;
+    background-color: #F5F5F5;
+    padding: 80px 20px;
+    font-family: "Inter", Arial, sans-serif;
+    position: relative;
+}
+
+.contacts-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.contacts-logo:hover {
+    transform: scale(1.05);
+}
+
+.contacts-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contacts-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.contacts-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.contact-icon img {
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover .contact-icon img {
+    transform: scale(1.1);
+}
+
+.contact-type {
+    color: #00D4AA;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.contact-detail {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.contact-button {
+    background: #00D4AA;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid #00D4AA;
+    font-size: 0.95rem;
+}
+
+.contact-button:hover {
+    background: white;
+    color: #00D4AA;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 170, 0.3);
+}
+
+.contacts-cta {
+    background: white;
+    padding: 50px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contacts-cta h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contacts-cta p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}

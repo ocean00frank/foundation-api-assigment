@@ -1,0 +1,200 @@
+# ======================
+# Dependencies
+# ======================
+node_modules/
+*/node_modules/
+**/node_modules/
+.npm
+.pnpm
+.yarn/
+.yarn/cache
+.yarn/install-state.gz
+.yarn/unplugged
+.yarn/build-state.yml
+.yarnrc.yml
+
+# ======================
+# Environment & Secrets
+# ======================
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+!.env*.example
+
+# ======================
+# Build Output / Cache
+# ======================
+# Next.js
+.next/
+out/
+.next/cache/
+
+# Nuxt.js
+.nuxt/
+.output/
+
+# Build directories
+dist/
+build/
+.nyc_output/
+.parcel-cache/
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+
+# Cache files
+.cache/
+*.tsbuildinfo
+.eslintcache
+
+# ======================
+# Runtime Data & Logs
+# ======================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ======================
+# OS & Editor Files
+# ======================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# ======================
+# Testing & Coverage
+# ======================
+coverage/
+.nyc_output/
+*.lcov
+.htmlcov/
+.pytest_cache/
+jest-cache/
+
+# ======================
+# Database & Storage
+# ======================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.dump
+
+# ======================
+# Uploads & Media
+# ======================
+uploads/
+*/uploads/
+**/uploads/
+temp_uploads/
+media/
+
+# ======================
+# Temporary Files
+# ======================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ======================
+# Package Manager
+# ======================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+shrinkwrap.yaml
+npm-shrinkwrap.json
+
+# ======================
+# Framework Specific
+# ======================
+# Svelte
+.svelte-kit/
+
+# Gatsby
+.cache/
+public
+
+# Angular
+.angular/
+
+# Vue
+.vuepress/
+
+# ======================
+# Misc
+# ======================
+# Compression
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Local configuration
+*.local
+.envrc
+.direnv/
+
+# Lerna
+lerna-debug.log*
+
+# Microbundle
+dist-ssr/
+
+# ======================
+# Large Binary Files
+# ======================
+*.node
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ======================
+# Production
+# ======================
+/public/build/
+/storage/*.key
+/.fleet/
+/.history/

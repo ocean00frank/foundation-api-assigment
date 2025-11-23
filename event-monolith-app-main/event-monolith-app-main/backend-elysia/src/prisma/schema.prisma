@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  ORGANIZER
+  ATTENDEE
+}
+
+enum RSVPStatus {
+  GOING
+  MAYBE
+  NOT_GOING
+}
+
+model User {
+  id         String    @id @default(uuid())
+  email      String    @unique
+  name       String?   // ADDED: For display names
+  password   String    // Hashed with bcrypt
+  role       UserRole  @default(ATTENDEE)
+  isVerified Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  organizedEvents Event[]         @relation("EventOrganizer")
+  rsvps           RSVP[]
+  favorites       EventFavorite[]
+
+  @@map("users")
+}
+
+model Event {
+  id          String    @id @default(uuid())
+  title       String
+  description String
+  date        DateTime  // Maps to frontend's start_date
+  location    String
+  image       String?   
+  category    String?   // ADDED: For event categorization
+  capacity    Int?      // ADDED: For event capacity
+  price       Float?    // ADDED: For event pricing
+  organizerId String
+  approved    Boolean   @default(false)
+  createdAt   DateTime  @default(now()) // Maps to frontend's submitted_at
+  updatedAt   DateTime  @updatedAt
+
+  organizer   User      @relation("EventOrganizer", fields: [organizerId], references: [id], onDelete: Cascade)
+  rsvps       RSVP[]
+  favorites   EventFavorite[]
+
+  @@map("events")
+}
+
+// ... rest of your models remain the same
+model EventFavorite {
+  id        String   @id @default(uuid())
+  userId    String
+  eventId   String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@map("event_favorites")
+}
+
+model RSVP {
+  id        String      @id @default(uuid())
+  userId    String
+  eventId   String
+  status    RSVPStatus
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@map("rsvps")
+}
